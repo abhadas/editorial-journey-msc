@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial Journey | MSC</title>
+
+<style>
+
+/* RESET */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Trebuchet MS", sans-serif;
+  background: #e6ebf2;
+  color: #333;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  gap: 30px;
+  z-index: 1000;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+}
+
+.hero video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  padding: 0 6%;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 52px;
+  margin: 0;
+}
+
+.hero p {
+  color: #f2f2f2;
+  font-size: 18px;
+  max-width: 600px;
+  margin-top: 10px;
+}
+
+/* SECTIONS */
+section {
+  padding: 55px 6%;
+}
+
+h2 {
+  color: #284181;
+}
+
+/* WHAT WE DO */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.card:nth-child(2){animation-delay:0.1s;}
+.card:nth-child(3){animation-delay:0.2s;}
+.card:nth-child(4){animation-delay:0.3s;}
+.card:nth-child(5){animation-delay:0.4s;}
+.card:nth-child(6){animation-delay:0.5s;}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-left: 4px solid #009db4;
+}
+
+.card h3 {
+  margin: 0;
+  color: #284181;
+  font-size: 16px;
+}
+
+.card p {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.card:hover .card-img {
+  transform: scale(1.06);
+}
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* WORKFLOW */
+.workflow-img {
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+
+/* BUBBLE */
+.editorial-bubble {
+  margin-top: 25px;
+  display: inline-block;
+  border: 1px solid #009db4;
+  padding: 10px 18px;
+  border-radius: 25px;
+  color: #009db4;
+  cursor: pointer;
+}
+
+.editorial-bubble:hover {
+  background: #009db4;
+  color: white;
+}
+
+/* BULLETS */
+.hidden-list {
+  display: none;
+  margin-top: 25px;
+  padding-left: 0;
+}
+
+.hidden-list.show {
+  display: block;
+}
+
+.hidden-list li {
+  list-style: none;
+  margin-bottom: 14px;
+  padding-left: 34px;
+  position: relative;
+}
+
+.hidden-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  background: #009db4;
+  border-radius: 50%;
+}
+
+/* DAY IMAGE */
+.day-img {
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 12px;
+}
+
+/* COLLAB */
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.collab-tile {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.collab-tile img {
+  width: 100%;
+  display: block;
+}
+
+.collab-tile h3 {
+  margin: 12px 14px 4px;
+  font-size: 14px;
+  color: #284181;
+}
+
+.collab-tile p {
+  margin: 0 14px 14px;
+  font-size: 12px;
+  color: #666;
+}
+
+.collab-tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* FINAL */
+.final {
+  text-align: center;
+  padding: 10px 6% 35px;
+}
+/* ===== FINAL GRID SECTION ===== */
+
+.info-box h2,
+.feedback-box h2 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  color: #284181;
+  font-size: 24px;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.creator:last-child {
+  margin-bottom: 0;
+}
+
+.creator img {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.creator img:hover {
+  transform: scale(1.05);
+  opacity: 0.92;
+}
+
+.creator span {
+  font-size: 15px;
+  color: #333;
+}
+
+.feedback-box {
+  max-width: none;
+}
+
+.feedback-box textarea {
+  width: 100%;
+  min-height: 150px;
+  border: 1px solid #d7dce5;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.feedback-box button {
+  margin-top: 18px;
+  background: #284181;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.feedback-box button:hover {
+  background: #009db4;
+}
+
+@media (max-width: 768px) {
+
+  .final-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* DAY SECTION (UNCHANGED) */
+.day-layout {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+}
+
+.day-text {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.day-text p {
+  margin-bottom: 18px;
+}
+
+.day-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.day-card {
+  background: #f7f7f7;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
+}
+
+.day-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #284181;
+}
+
+.day-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+  .day-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .day-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== VIDEO SECTION (ONLY ADDITION) ===== */
+.video-section {
+  display: flex;
+  justify-content: center;
+  padding: 50px 6% 30px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 85%;              /* 👈 increased */
+  max-width: 1100px;      /* 👈 increased */
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.video-wrapper video {
+  width: 100%;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.video-overlay span {
+  color: white;
+  font-size: 14px;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 16px;
+  border-radius: 30px;
+}
+
+.video-caption {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .video-wrapper {
+    width: 100%;
+  }
+}
+/* ===== QUIZ SECTION ===== */
+
+.quiz-section {
+  padding: 55px 6%;
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+  align-items: stretch;
+}
+
+.quiz-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 26px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.quiz-card h3 {
+  margin-top: 0;
+  margin-bottom: 22px;
+  color: #284181;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.option-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.option {
+  background: #f7f7f7;
+  border: 1px solid transparent;
+  padding: 16px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.28s ease-in-out;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.option:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.option.correct {
+  background: #e8f6ef;
+  border-color: #1d9c68;
+  color: #176746;
+  transform: scale(1.02);
+}
+
+.option.wrong {
+  background: #fdeeee;
+  border-color: #d87070;
+  animation: shake 0.3s ease-in-out;
+}
+
+.feedback-text {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+  min-height: 18px;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+/* ===== FEEDBACK SECTION ===== */
+
+.feedback-section {
+  padding: 20px 6% 50px;
+}
+
+.feedback-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  max-width: 900px;
+}
+
+.feedback-box textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid #d7dce5;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.25s ease;
+}
+
+.feedback-box textarea:focus {
+  border-color: #009db4;
+}
+
+.feedback-box button {
+  margin-top: 18px;
+  background: #284181;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.feedback-box button:hover {
+  background: #009db4;
+  transform: translateY(-2px);
+}
+
+.submit-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+
+  .quiz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-card {
+    padding: 22px;
+  }
+
+  .option {
+    font-size: 13px;
+  }
+}
+  /* ===== SIMPLE FOOTER ===== */
+
+.editorial-footer {
+  padding: 10px 6% 30px;
+}
+.creator-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.creator-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.creator-mini img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  cursor: pointer;
+}
+.creator-mini img:hover {
+  transform: scale(1.18) translateY(-2px);
+  opacity: 0.88;
+}
+.creator-mini span {
+  font-size: 15px;
+  color: #333;
+}
+
+.creator-divider {
+  color: #999;
+}
+.editorial-footer h3 {
+  color: #284181;
+  margin-bottom: 10px;
+}
+
+.footer-feedback {
+  background: rgba(255,255,255,0.55);
+  border-radius: 14px;
+  padding: 22px;
+  max-width: 620px;
+}
+
+.footer-feedback textarea {
+  width: 100%;
+  min-height: 80px;
+  border: none;
+  border-bottom: 1px solid #bcc6d4;
+  background: transparent;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.footer-feedback button {
+  margin-top: 14px;
+  background: #284181;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.footer-feedback button:hover {
+  background: #009db4;
+}
+
+  /* ===== DARK MODE ===== */
+
+body.dark-mode {
+  background: #101418;
+  color: #e6edf3;
+}
+
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #8db8ff;
+}
+
+body.dark-mode .card,
+body.dark-mode .quiz-card,
+body.dark-mode .collab-tile,
+body.dark-mode .footer-feedback,
+body.dark-mode .day-card {
+  background: #182028;
+  color: #d7dee7;
+  box-shadow: none;
+}
+
+body.dark-mode .option {
+  background: #202a34;
+  color: #d7dee7;
+}
+
+body.dark-mode .option.correct {
+  background: #1e4a36;
+  color: #d9ffeb;
+}
+
+body.dark-mode .option.wrong {
+  background: #4a2525;
+}
+
+body.dark-mode textarea {
+  color: #f2f2f2;
+  border-bottom: 1px solid #5d6a78;
+}
+
+body.dark-mode nav {
+  background: rgba(0,0,0,0.7);
+}
+
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode .creator-mini span {
+  color: #cfd8e3;
+}
+  /* ===== MOBILE NAV ===== */
+
+@media (max-width: 768px) {
+
+  nav {
+    padding: 10px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  nav {
+  padding-right: 14px;
+}
+
+  .overlay {
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    line-height: 1.12;
+    max-width: 320px;
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 300px;
+  }
+
+}
+/* ===== FLOATING THEME TOGGLE ===== */
+
+#themeToggle {
+
+  position: fixed;
+
+  bottom: 20px;
+  right: 20px;
+
+  width: 52px;
+  height: 52px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(20,20,20,0.82);
+  color: white;
+
+  font-size: 18px;
+  cursor: pointer;
+
+  z-index: 9999;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.22);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  transform: scale(1.08);
+  background: rgba(20,20,20,0.95);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#what">What we do</a>
+  <a href="#workflow">Workflow</a>
+  <a href="#day">A day at the desk</a>
+  <a href="#collab">Collaboration</a>
+  
+</nav>
+
+<button id="themeToggle">🌙</button>
+
+<div class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="editing.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay">
+    <div>
+      <h1>How stories meet editorial standards</h1>
+      <p>
+        An editorial journey at MSC that highlights the development of writing and editing skills.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section id="what">
+  <h2>What we do</h2>
+  <p>We polish content across formats.</p>
+  <div class="cards">
+
+  <a href="https://www.microsave.net/womenledenterprises/wp-content/uploads/2023/09/230818-Supply-side-assessment-report-for-WMSEs-final_PA_VP-RG_PK_final.pdf" class="card-link" target="_blank">
+    <div class="card">
+      <img src="reports.png" class="card-img">
+      <h3>Reports</h3>
+      <p>Structured and consistent</p>
+    </div>
+  </a>
+
+  <a href="https://www.microsave.net/wp-content/uploads/2025/12/251006_GFSI-Playbook_NS_1-1_compressed.pdf" class="card-link" target="_blank">
+    <div class="card">
+      <img src="proposal.png" class="card-img">
+      <h3>Proposals</h3>
+      <p>Clear and persuasive</p>
+    </div>
+  </a>
+
+  <a href="https://www.microsave.net/signature_projects/health-and-nutrition-layering-in-womens-economic-empowerment-wee-interventions/" class="card-link" target="_blank">
+    <div class="card">
+      <img src="website.png" class="card-img">
+      <h3>Website content</h3>
+      <p>Simple and direct</p>
+    </div>
+  </a>
+
+  <a href="https://www.microsave.net/2025/12/08/bangladeshs-bureau-reform-turns-repayment-history-into-portable-assets/" class="card-link" target="_blank">
+    <div class="card">
+      <img src="blog.png" class="card-img">
+      <h3>Blogs</h3>
+      <p>Readable and engaging</p>
+    </div>
+  </a>
+
+  <a href="https://www.linkedin.com/posts/pre-summit-event-of-the-ai-impact-summit-ugcPost-7426885486763249665-fyA4?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEDl1OwBjplkj0jt0SAjwpuj4kg2u3fPeBo" class="card-link" target="_blank">
+    <div class="card">
+      <img src="social.png" class="card-img">
+      <h3>Social media</h3>
+      <p>Sharp and concise</p>
+    </div>
+  </a>
+
+  <a href="https://www.hindustantimes.com/ht-insight/future-tech/why-ai-inclusion-matters-more-than-ai-innovation-101770108944375.html" class="card-link" target="_blank">
+    <div class="card">
+      <img src="oped.png" class="card-img">
+      <h3>Op-eds</h3>
+      <p>Clear and opinion-led</p>
+    </div>
+  </a>
+
+</div>
+</section>
+
+<section id="workflow">
+  <h2>Editorial workflow</h2>
+  <p>Content moves through editorial before it is published.</p>
+  <img src="image%201.png" class="workflow-img">
+  <div class="editorial-bubble" onclick="toggleEditorial()">
+    Editorial is where content takes shape
+  </div>
+  <ul id="points" class="hidden-list">
+    <li>Review drafts and identify gaps</li>
+    <li>Add comments and guide revisions</li>
+    <li>Improve structure, clarity, and flow</li>
+    <li>Check facts and ensure consistency</li>
+    <li>Work through multiple rounds until ready</li>
+  </ul>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div>
+    <div class="video-wrapper">
+      <video id="previewVideo" autoplay muted loop playsinline>
+        <source src="day-at-desk.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay" id="videoOverlay">
+        <span>▶ Play with sound</span>
+      </div>
+    </div>
+    <div class="video-caption">
+      Each day unfolds differently. Tomorrow can feel different again.
+    </div>
+  </div>
+</section>
+
+<section id="day">
+  <h2>A day at the desk</h2>
+
+  <div class="day-layout">
+    <div class="day-text">
+      <p>The work moves through different moments.</p>
+      <p>Some are quieter, where we read, edit, and refine. Others move into conversation.</p>
+      <p>In between, there are team lunches, work trips, and moments of events.</p>
+      <p>We exchange ideas and discover new ways of working.</p>
+    </div>
+
+    <div class="day-cards">
+      <div class="day-card"><h3>Conversations</h3><p>Quick chats, check-ins, and informal discussions</p></div>
+      <div class="day-card"><h3>Lunch</h3><p>Time spent together beyond work</p></div>
+      <div class="day-card"><h3>Learning</h3><p>Training sessions, quizzes, and shared learning</p></div>
+      <div class="day-card"><h3>Celebrations</h3><p>Birthdays, festivals, and team milestones</p></div>
+      <div class="day-card"><h3>Work trips</h3><p>Annual meetings, offsites, and events</p></div>
+      <div class="day-card"><h3>Breaks</h3><p>Short pauses to reset and recharge</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="collab">
+  <h2>Collaboration and coordination</h2>
+  <p>Editorial work is collaborative.</p>
+
+  <div class="collab-grid">
+    <div class="collab-tile">
+      <img src="technical-inputs.png">
+      <h3>Technical team</h3>
+      <p>Provides the draft content.</p>
+    </div>
+    <div class="collab-tile">
+      <img src="design.png">
+      <h3>Design team</h3>
+      <p>Refines content for clarity and presentation.</p>
+    </div>
+    <div class="collab-tile">
+      <img src="marcom.png">
+      <h3>Marcom team</h3>
+      <p>Aligns messaging with communication goals.</p>
+    </div>
+    <div class="collab-tile">
+      <img src="team.png">
+      <h3>Team collaboration</h3>
+      <p>Shares feedback and improves content collectively.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleEditorial() {
+  document.getElementById("points").classList.toggle("show");
+}
+
+const video = document.getElementById("previewVideo");
+const overlay = document.getElementById("videoOverlay");
+
+overlay.addEventListener("click", () => {
+  video.muted = false;
+  video.loop = false;
+  video.controls = true;
+  video.play();
+  overlay.style.display = "none";
+});
+  function checkAnswer(element, isCorrect, message) {
+
+  const card = element.closest(".quiz-card");
+  const options = card.querySelectorAll(".option");
+  const feedback = card.querySelector(".feedback-text");
+
+  options.forEach(option => {
+    option.classList.remove("correct", "wrong");
+  });
+
+  void element.offsetWidth;
+
+  if (isCorrect) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+
+  feedback.textContent = message;
+}
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+
+  document.body.classList.toggle("dark-mode");
+
+  if (document.body.classList.contains("dark-mode")) {
+    themeToggle.innerHTML = "☀️";
+  } else {
+    themeToggle.innerHTML = "🌙";
+  }
+
+});
+</script>
+<!-- QUIZ SECTION -->
+<section class="quiz-section">
+  <h2>Take the editor’s seat.</h2>
+  <p>Test how editorial choices improve clarity, tone, and readability.</p>
+
+  <div class="quiz-grid">
+
+    <!-- Q1 -->
+    <div class="quiz-card">
+      <h3>Which version is clearer?</h3>
+
+      <div class="option-grid">
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Simpler sentence structures improve clarity.')">
+          The report was written by the team in order to explain the results.
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, true, 'Clear and concise phrasing improves readability.')">
+          The team wrote the report to explain the results.
+        </div>
+      </div>
+
+      <div class="feedback-text"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-card">
+      <h3>Which sentence fits a professional tone?</h3>
+
+      <div class="option-grid">
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Professional writing avoids vague or casual phrasing.')">
+          The results were kind of surprising and really interesting.
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, true, 'Professional tone strengthens credibility.')">
+          The results were unexpected and significant.
+        </div>
+      </div>
+
+      <div class="feedback-text"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-card">
+      <h3>What improves readability?</h3>
+
+      <div class="option-grid">
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Dense blocks of text can reduce readability.')">
+          One long paragraph with multiple ideas
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, true, 'Clear structure helps readers navigate content easily.')">
+          Clear sections with headings
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Repetition can weaken reader engagement.')">
+          Repetition of the same point
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Too much technical detail can overwhelm readers.')">
+          Excessive technical detail
+        </div>
+      </div>
+
+      <div class="feedback-text"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-card">
+      <h3>What is the editor’s role here?</h3>
+
+      <div class="option-grid">
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Editing focuses on improving existing content.')">
+          Add more content
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, true, 'Editors strengthen clarity, flow, and readability.')">
+          Refine clarity and flow
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Editors support the topic rather than changing it.')">
+          Change the topic
+        </div>
+
+        <div class="option"
+          onclick="checkAnswer(this, false, 'Key information should remain intact.')">
+          Remove key information
+        </div>
+      </div>
+
+      <div class="feedback-text"></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="editorial-footer">
+
+  <h3>This experience is created by</h3>
+
+  <div class="creator-row">
+
+  <div class="creator-mini">
+    <img src="Abha.png" alt="Abha Das">
+    <span>Abha Das</span>
+  </div>
+
+  <div class="creator-divider">|</div>
+
+  <div class="creator-mini">
+    <img src="Varsha.png" alt="Varsha Gopinathan">
+    <span>Varsha Gopinathan</span>
+  </div>
+
+</div>
+
+  <div class="footer-feedback">
+    <h3>Share your thoughts</h3>
+
+    <form action="https://formspree.io/f/xvzlqqvv" method="POST">
+
+<input
+    type="text"
+    name="name"
+    placeholder="Your name"
+    required>
+
+  <textarea
+    name="message"
+    placeholder="Share your feedback on the content or editorial process..."
+    required>
+  </textarea>
+
+  <button type="submit">
+    Submit feedback
+  </button>
+
+</form>
+  </div>
+
+</section>
+  <section class="final">
+  <h2>Every piece you read has passed through editorial.</h2>
+</section>
+</body>
+</html>
