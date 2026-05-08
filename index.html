@@ -370,7 +370,21 @@ h2 {
   font-size: 13px;
   color: #555;
 }
+.day-intro {
+  max-width: 950px;
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
 
+.day-card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  display: block;
+}
 .day-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
@@ -914,20 +928,49 @@ body.dark-mode .creator-mini span {
   <h2>A day at the desk</h2>
 
   <div class="day-layout">
-    <div class="day-text">
-      <p>The work moves through different moments.</p>
-      <p>Some are quieter, where we read, edit, and refine. Others move into conversation.</p>
-      <p>In between, there are team lunches, work trips, and moments of events.</p>
-      <p>We exchange ideas and discover new ways of working.</p>
-    </div>
+    <p class="day-intro">
+  The work moves through different moments. Some are quieter, where we read, edit, and refine. Others move into conversation. In between, there are team lunches, work trips, and moments of events. We exchange ideas and discover new ways of working.
+</p>
 
-    <div class="day-cards">
-      <div class="day-card"><h3>Conversations</h3><p>Quick chats, check-ins, and informal discussions</p></div>
-      <div class="day-card"><h3>Lunch</h3><p>Time spent together beyond work</p></div>
-      <div class="day-card"><h3>Learning</h3><p>Training sessions, quizzes, and shared learning</p></div>
-      <div class="day-card"><h3>Celebrations</h3><p>Birthdays, festivals, and team milestones</p></div>
-      <div class="day-card"><h3>Work trips</h3><p>Annual meetings, offsites, and events</p></div>
-      <div class="day-card"><h3>Breaks</h3><p>Short pauses to reset and recharge</p></div>
+<div class="day-cards">
+
+  <div class="day-card">
+    <img src="conversation.png" class="day-card-img">
+    <h3>Conversations</h3>
+    <p>Quick chats, check-ins, and informal discussions</p>
+  </div>
+
+  <div class="day-card">
+    <img src="lunch.png" class="day-card-img">
+    <h3>Lunch</h3>
+    <p>Time spent together beyond work</p>
+  </div>
+
+  <div class="day-card">
+    <img src="learning.png" class="day-card-img">
+    <h3>Learning</h3>
+    <p>Training sessions, quizzes, and shared learning</p>
+  </div>
+
+  <div class="day-card">
+    <img src="celebration.png" class="day-card-img">
+    <h3>Celebrations</h3>
+    <p>Birthdays, festivals, and team milestones</p>
+  </div>
+
+  <div class="day-card">
+    <img src="trip.png" class="day-card-img">
+    <h3>Work trips</h3>
+    <p>Annual meetings, offsites, and events</p>
+  </div>
+
+  <div class="day-card">
+    <img src="break.png" class="day-card-img">
+    <h3>Breaks</h3>
+    <p>Short pauses to reset and recharge</p>
+  </div>
+
+</div>
     </div>
   </div>
 </section>
