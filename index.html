@@ -641,7 +641,15 @@ h2 {
   font-size: 15px;
   color: #333;
 }
+.creator-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.25s ease;
+}
 
+.creator-link:hover {
+  color: #009db4;
+}
 .creator-divider {
   color: #999;
 }
@@ -1188,16 +1196,30 @@ themeToggle.addEventListener("click", () => {
   <div class="creator-row">
 
   <div class="creator-mini">
+  <a href="https://in.linkedin.com/in/abha-das-b5077a264" target="_blank">
     <img src="Abha.png" alt="Abha Das">
-    <span>Abha Das</span>
-  </div>
+  </a>
 
-  <div class="creator-divider">|</div>
+  <a href="https://in.linkedin.com/in/abha-das-b5077a264"
+     target="_blank"
+     class="creator-link">
+     Abha Das
+  </a>
+</div>
 
-  <div class="creator-mini">
+<div class="creator-divider">|</div>
+
+<div class="creator-mini">
+  <a href="https://in.linkedin.com/in/varshagopinathan" target="_blank">
     <img src="Varsha.png" alt="Varsha Gopinathan">
-    <span>Varsha Gopinathan</span>
-  </div>
+  </a>
+
+  <a href="https://in.linkedin.com/in/varshagopinathan"
+     target="_blank"
+     class="creator-link">
+     Varsha Gopinathan
+  </a>
+</div>
 
 </div>
 
